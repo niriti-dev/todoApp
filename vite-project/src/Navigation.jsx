@@ -2,8 +2,12 @@
 
 
 function Navigation(props) {
-    const tabs = ['AlL', 'Open', 'Done']
-    const { todos } = props 
+    console.log('props:', props);  // Debugging step
+
+    const { todos, changeTab} = props 
+    console.log('change tab function:', typeof changeTab); 
+
+    const tabs = ['All', 'Open', 'Done']
 
     return(
 
@@ -20,7 +24,15 @@ function Navigation(props) {
                     
 
                         // jsx component: the indivisual button tab 
-                        return <button id={tabIdx}>{tab} ({taskCount})</button> 
+                        return (
+                            <button 
+                                id={tabIdx}
+                                onClick={() => {console.log(tab); changeTab(tab)}}
+                            >
+                        
+                                {tab}({taskCount})
+                
+                            </button> )
                     
                     })
 
