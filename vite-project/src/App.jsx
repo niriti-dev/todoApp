@@ -8,23 +8,37 @@ import TodoList from './TodoList.jsx'
 
 function App() {
   const [ tab, setTab ] = useState('All')
-   
-  const todos = [
+
+  //CONSIDERATION 2 [ANOTHER ONE IN TodoList.jsx - CONSIDERATION ONE]
+
+  const [todos, setTodos] = useState(
+    [
     {input: "go to the gym", isComplete: false}, 
     {input: "finish react project", isCompleted: false}
-  ]
+    ]
+  
+  )   
+  function changeTodos(idx, toDelete=false) {
+    let newTodo; 
+    if (toDelete) {
+      newTodo = todos.filter((todo, todoIdx) => todoIdx === idx)
+    }
+    else {
+      newTodo = [...todos]
+      newTodo[idx].isCompleted = true
+    }
+    setTodos(newTodo)
+    
+  }
 
-  // default 'state' = Open 
-  // when function triggered; open changes to whatever clicked 
-  // you send the state into the todoList props 
-  // { tab setTab} = useState('Open')
-  // < Navigation todos={todos} />
+
   return (
     <>
+
      <Header todos={todos} tab={tab}/>
      <Navigation todos={todos} changeTab={setTab}/>
-     <TodoList todos={todos} currTab = {tab}/>
-     
+     <TodoList currTab = {tab} todos={todos} changeTodos = {changeTodos}/>
+    
     </>
   )
 }
