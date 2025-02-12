@@ -35,6 +35,7 @@ function App() {
   function addNewTodo(newText) {
     return setTodos([...todos, {id: uuidv4(), input: newText, isComplete: false}]) 
   }
+  
 
 
   return (
@@ -42,8 +43,13 @@ function App() {
       <Header todos={todos} tab={tab}/>
       <Navigation todos={todos} changeTab={setTab}/>
       <TodoList currTab = {tab} todos={todos} changeTodos = {changeTodos}/>
-      <InputCard addNewTodo={addNewTodo}/>
-    </>
+      {/* {
+        currTab !== "Done" ? <InputCard addNewTodo={addNewTodo} /> : null
+      } */}
+
+    <InputCard addNewTodo={addNewTodo} />
+      
+      </>
   )
 }
 
