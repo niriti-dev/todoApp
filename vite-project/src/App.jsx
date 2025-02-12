@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import Header from './Header.jsx'
 import Navigation from './Navigation.jsx'
 import TodoList from './TodoList.jsx'
+import InputCard from './InputCard.jsx'
 
 function App() {
   const [ tab, setTab ] = useState('All')
@@ -19,27 +20,29 @@ function App() {
     ]
   
   )   
+
+  // i could probably pacakge this into a object and pass this object in 
   function changeTodos(idx, toDelete=false) {
-    let newTodo; 
     if (toDelete) {
-      newTodo = todos.filter((todo, todoIdx) => todo.id === idx)
+      return setTodos(todos.filter((todo, todoIdx) => todo.id === idx))
     }
-    else {
-      newTodo = todos.map((todo) => (todo.id === idx)? ({...todo, isComplete:true}): (todo)  ) 
+    else{
+      return setTodos(todos.map((todo) => (todo.id === idx)? ({...todo, isComplete:true}): (todo)  )) 
     }
-    console.log(newTodo)
-    setTodos(newTodo)
     
+  }
+
+  function addNewTodo(newText) {
+    return setTodos([...todos, {id: uuidv4(), input: newText, isComplete: false}]) 
   }
 
 
   return (
     <>
-
-     <Header todos={todos} tab={tab}/>
-     <Navigation todos={todos} changeTab={setTab}/>
-     <TodoList currTab = {tab} todos={todos} changeTodos = {changeTodos}/>
-    
+      <Header todos={todos} tab={tab}/>
+      <Navigation todos={todos} changeTab={setTab}/>
+      <TodoList currTab = {tab} todos={todos} changeTodos = {changeTodos}/>
+      <InputCard addNewTodo={addNewTodo}/>
     </>
   )
 }
