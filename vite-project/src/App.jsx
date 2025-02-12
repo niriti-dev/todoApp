@@ -22,11 +22,9 @@ function App() {
   function changeTodos(idx, toDelete=false) {
     let newTodo; 
     if (toDelete) {
-      newTodo = todos.filter((todo, todoIdx) => todoIdx === idx)
+      newTodo = todos.filter((todo, todoIdx) => todo.id === idx)
     }
     else {
-      console.log('ehfiwejfwej boop boop ')
-      console.log(idx)
       newTodo = todos.map((todo) => (todo.id === idx)? ({...todo, isComplete:true}): (todo)  ) 
     }
     console.log(newTodo)
