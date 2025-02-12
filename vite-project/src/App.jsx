@@ -1,5 +1,6 @@
 import { use, useState } from 'react'
 import reactLogo from './assets/react.svg'
+import { v4 as uuidv4 } from 'uuid'
 
 
 import Header from './Header.jsx'
@@ -13,8 +14,8 @@ function App() {
 
   const [todos, setTodos] = useState(
     [
-    {input: "go to the gym", isComplete: false}, 
-    {input: "finish react project", isCompleted: false}
+    {id: uuidv4(), input: "go to the gym", isComplete: false}, 
+    {id: uuidv4(), input: "finish react project", isComplete: false}
     ]
   
   )   
@@ -24,9 +25,11 @@ function App() {
       newTodo = todos.filter((todo, todoIdx) => todoIdx === idx)
     }
     else {
-      newTodo = [...todos]
-      newTodo[idx].isCompleted = true
+      console.log('ehfiwejfwej boop boop ')
+      console.log(idx)
+      newTodo = todos.map((todo) => (todo.id === idx)? ({...todo, isComplete:true}): (todo)  ) 
     }
+    console.log(newTodo)
     setTodos(newTodo)
     
   }

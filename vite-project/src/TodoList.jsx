@@ -26,7 +26,7 @@ function TodoList(props) {
             {
                 
                 todos.map((todo, todoIdx) => {
-                    return <TodoCard key={todoIdx} 
+                    return <TodoCard key={todo.id} 
                     todo={todo}
                     todoIdx = {todoIdx}
                     changeTodos={changeTodos}
