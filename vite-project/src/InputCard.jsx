@@ -7,15 +7,13 @@ function InputCard(props) {
 
     return(
         <>  
-        <div>
+        <div >
             <input type="text"
             value = {todoText}
             onChange={(e) => {console.log(todoText); setTodoText(e.target.value)}}
             placeholder="Add new Todo"
             />
-        </div>
 
-        <div>
             <button
                 onClick={
                     () => {
@@ -23,8 +21,10 @@ function InputCard(props) {
                         setTodoText('')
                     }
                 }
-            >Add</button>
+                >Add</button>
         </div>
+
+    
         
         </>
         

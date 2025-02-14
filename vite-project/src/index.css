@@ -1,68 +1,137 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* ============================================
+   Global Variables & Base Styles
+   ============================================ */
+   :root {
+    --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --color-bg: #f8fafc;           /* Light background */
+    --color-primary: #876cd0;      /* Blue for active/hover accents */
+    --color-text: #374151;         /* Dark gray for primary text */
+    --color-muted: #6b7280;        /* Muted text for secondary info */
+    --color-border: #e5e7eb;       /* Light border color */
+    
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    
+    --transition-speed: 0.3s;
   }
-  a:hover {
-    color: #747bff;
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
-  button {
-    background-color: #f9f9f9;
+  
+  body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
   }
-}
+  
+  /* ============================================
+     Header Component Styling
+     ============================================ */
+  header,
+  nav.header {
+    background-color: #fff;
+    padding: var(--space-lg) var(--space-md);
+
+  }
+  
+  header .logo,
+  nav.header .logo {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  header .logo h1,
+  nav.header .logo h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    text-align: center;
+    -ms-flex-align: ;
+  }
+  
+  /* Optional extra divider under header content */
+  header::after,
+  nav.header::after {
+    content: "";
+    display: block;
+    width: 80%;
+    margin: var(--space-sm) auto 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  /* ============================================
+     Navigation Tabs Styling
+     ============================================ */
+  .nav-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: var(--space-sm) var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .nav-tabs > button {
+    background: none;
+    border: none;
+    font-family: var(--font-family);
+    font-size: 1.125rem;
+    padding: var(--space-xs) var(--space-md);
+    color: var(--color-muted);
+    cursor: pointer;
+    position: relative;
+    transition: color var(--transition-speed), transform var(--transition-speed);
+  }
+  
+  /* Space out buttons */
+  .nav-tabs > button:not(:first-child) {
+    margin-left: var(--space-md);
+  }
+  
+  /* Underline effect using pseudo-element */
+  .nav-tabs > button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-primary);
+    transition: width var(--transition-speed);
+  }
+  
+  /* Hover & active states */
+  .nav-tabs > button:hover,
+  .nav-tabs > button.active {
+    color: var(--color-primary);
+  }
+  
+  .nav-tabs > button:hover::after,
+  .nav-tabs > button.active::after {
+    width: 100%;
+  }
+  
+  /* ============================================
+     Responsive Adjustments
+     ============================================ */
+  @media (max-width: 768px) {
+    header .logo h1,
+    nav.header .logo h1 {
+      font-size: 2rem;
+    }
+    
+    .nav-tabs > button {
+      font-size: 1rem;
+      padding: var(--space-xs) var(--space-sm);
+    }
+  }
+  

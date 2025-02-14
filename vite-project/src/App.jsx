@@ -1,6 +1,7 @@
 import { use, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import { v4 as uuidv4 } from 'uuid'
+import './index.css'
 
 
 import Header from './Header.jsx'
