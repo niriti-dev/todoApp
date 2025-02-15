@@ -3,7 +3,7 @@
 
 function Navigation(props) {
 
-    const { todos, changeTab} = props 
+    const { todos, selectedTab, changeTab} = props 
 
     const allTabs = ['All', 'Open', 'Done']
 
@@ -19,8 +19,7 @@ function Navigation(props) {
                     
                         return (
                                 <button 
-                                    className='tab-button'
-                                    key={tabIdx}
+                                    className={"tab-button " + (tab == selectedTab ? ' selected-tab' : ' ')}                                    key={tabIdx}
                                     onClick={() => {changeTab(tab)}}
                                 >
                                 <h4>

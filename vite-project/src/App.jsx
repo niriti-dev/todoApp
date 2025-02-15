@@ -9,11 +9,11 @@ import TodoList from './TodoList.jsx'
 import TodoInput from './TodoInput.jsx'
 
 function App() {
-  const [ tab, setTab ] = useState('All')
+  const [ selectedTab, setSelectedTab ] = useState('All')
 
   function changeTab(tab) {
     console.log(tab)
-    setTab(tab); 
+    setSelectedTab(tab); 
   }
 
 
@@ -32,9 +32,9 @@ function App() {
 
   return (
     <>
-      <Header todos={todos} tab={tab}/>
-      <Navigation todos={todos} changeTab={changeTab}/>
-      <TodoList tab={tab} todos={todos} />
+      <Header todos={todos}/>
+      <Navigation todos={todos} selectedTab= {selectedTab} changeTab={changeTab}/>
+      <TodoList selectedTab={selectedTab} todos={todos} />
       <TodoInput handleAddTodo={handleAddTodo}/>
       
       </>
