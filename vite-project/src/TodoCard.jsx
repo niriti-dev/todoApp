@@ -5,11 +5,8 @@ function TodoCard(prop) {
     return(
         <>
             <div>
-                <div>
                     <p>{todo.input}</p>
-                </div>
 
-                <div>
                     {//  when done is clicked this item should have a minor change: isComplete = true 
                     }
                     <button onClick={() => {console.log('done', todo.id); changeTodos(todo.id)}}>
@@ -23,7 +20,6 @@ function TodoCard(prop) {
                     <button onClick={() => {console.log('delete'); changeTodos(todo.id, true)}}>
                         Detele 
                     </button>
-                </div>
             </div>
 
 

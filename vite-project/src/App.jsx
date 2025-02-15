@@ -27,7 +27,7 @@ function App() {
       return setTodos(todos.filter((todo, todoIdx) => todo.id === idx))
     }
     else{
-      return setTodos(todos.map((todo) => (todo.id === idx)? ({...todo, isComplete:true}): (todo)  )) 
+      return setTodos(todos.filter((todo) => todo.id == idx) )
     }
     
   }
