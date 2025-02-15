@@ -34,8 +34,9 @@ function Navigation(props) {
                     })
 
                 }
-
+            <hr />
             </nav>
+
         
     ) 
 

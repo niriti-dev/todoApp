@@ -9,7 +9,7 @@ import TodoList from './TodoList.jsx'
 import TodoInput from './TodoInput.jsx'
 
 function App() {
-  const [ selectedTab, setSelectedTab ] = useState('All')
+  const [ selectedTab, setSelectedTab ] = useState('Open')
 
   function changeTab(tab) {
     console.log(tab)
@@ -30,11 +30,27 @@ function App() {
 
   }
 
+  function handleDeleteTodo(index) {
+    const newTodoList  = todos.filter((todo, todoIdx) => todoIdx !== index)
+    setTodos(newTodoList)
+
+  }
+  
+  function handleCompleteTodo(index){
+    const doneTodo = todos[index] 
+    doneTodo.isComplete = true 
+    setTodos(todos.map((todo) => todo.index === index? (doneTodo) : (todo)))
+
+  }
+
+  
+
+  
   return (
     <>
       <Header todos={todos}/>
       <Navigation todos={todos} selectedTab= {selectedTab} changeTab={changeTab}/>
-      <TodoList selectedTab={selectedTab} todos={todos} />
+      <TodoList selectedTab={selectedTab} todos={todos} handleDeleteTodo={handleDeleteTodo} handleCompleteTodo={handleCompleteTodo}/>
       <TodoInput handleAddTodo={handleAddTodo}/>
       
       </>

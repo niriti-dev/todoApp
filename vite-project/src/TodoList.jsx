@@ -2,7 +2,7 @@ import TodoCard from './TodoCard'
 
 function TodoList(props) {
 
-    let { selectedTab, todos} = props 
+    let { selectedTab, todos, handleDeleteTodo} = props 
 
 
 
@@ -16,11 +16,12 @@ function TodoList(props) {
 
     return (
         <>
-            {
-                
+            {   
                 todos.map((todo, todoIdx) => {
                     return <TodoCard key={todoIdx} 
                     todo={todo}
+                    todoIdx = {todoIdx}
+                    {...props}
                     />
 
                 })

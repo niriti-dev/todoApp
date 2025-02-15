@@ -1,5 +1,5 @@
 function TodoCard(props) {
-    const { todo } = props 
+    const { todo, todoIdx, handleDeleteTodo, handleCompleteTodo } =  props 
 
   
     return(
@@ -8,11 +8,13 @@ function TodoCard(props) {
                     <p> {todo.input} </p>
                     <div className="todo-button">
 
-                        <button disabled={todo.isComplete}>
+                        <button disabled={todo.isComplete}
+                        onClick={() => {handleCompleteTodo(todoIdx)}}
+                        >
                             Done
                         </button>
 
-                        <button >
+                        <button onClick={() => {console.log('delete'); handleDeleteTodo(todoIdx)}}>
                             Detele 
                         </button>
 
