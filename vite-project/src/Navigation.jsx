@@ -2,45 +2,42 @@
 
 
 function Navigation(props) {
-    console.log('props:', props);  // Debugging step
 
     const { todos, changeTab} = props 
-    console.log('change tab function:', typeof changeTab); 
 
-    const tabs = ['All', 'Open', 'Done']
+    const allTabs = ['All', 'Open', 'Done']
 
     return(
-
-        <>
-            <div>
+            <nav className='tab-container'>
                 {
-                    tabs.map((tab, tabIdx) => {
+                    allTabs.map((tab, tabIdx) => {
           
-                        // logic to get the number of tasks for each tabs 
                         const taskCount = (tab === "All")? todos.length
                         : (tab === "Done") 
                             ? todos.filter(todo => todo.isComplete).length
                             : todos.filter(todo => !todo.isComplete).length;
                     
-
-                        // jsx component: the indivisual button tab 
                         return (
-                            <button 
-                                id={tabIdx}
-                                onClick={() => {console.log(tab); changeTab(tab)}}
-                            >
-                        
-                                {tab}({taskCount})
+                                <button 
+                                    className='tab-button'
+                                    key={tabIdx}
+                                    onClick={() => {changeTab(tab)}}
+                                >
+                                <h4>
+                                    {tab} <span> ({taskCount})</span>
+                                </h4>
                 
-                            </button> )
+                                </button>
+
+
+                             )
                     
                     })
 
                 }
 
-            </div>
+            </nav>
         
-        </>
     ) 
 
 }

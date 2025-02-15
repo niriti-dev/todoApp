@@ -1,25 +1,23 @@
-function TodoCard(prop) {
-    const { todo, changeTodos} = prop
+function TodoCard(props) {
+    const { todo } = props 
 
   
     return(
         <>
-            <div>
-                    <p>{todo.input}</p>
+            <div className="card todo-item">
+                    <p> {todo.input} </p>
+                    <div className="todo-button">
 
-                    {//  when done is clicked this item should have a minor change: isComplete = true 
-                    }
-                    <button onClick={() => {console.log('done', todo.id); changeTodos(todo.id)}}>
-                        Done
+                        <button disabled={todo.isComplete}>
+                            Done
+                        </button>
 
-                    </button>
+                        <button >
+                            Detele 
+                        </button>
 
-                    {//  when delete is clicked this item should be removed from my list completely 
-                    }
-
-                    <button onClick={() => {console.log('delete'); changeTodos(todo.id, true)}}>
-                        Detele 
-                    </button>
+                    </div>
+                    
             </div>
 
 

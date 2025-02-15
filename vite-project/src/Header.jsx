@@ -7,11 +7,11 @@ function Header(props) {
     const taskOrTasks = remainingTasks === 1 ? 'task' : 'tasks';
 
     return (
-        <>
-            <h1>
+        <header>
+            <h1 className="text-gradient ">
                 You have {remainingTasks} {taskOrTasks} remaining
             </h1>
-        </>
+        </header>
     );
 }
 

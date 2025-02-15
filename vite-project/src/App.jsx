@@ -6,48 +6,37 @@ import { v4 as uuidv4 } from 'uuid'
 import Header from './Header.jsx'
 import Navigation from './Navigation.jsx'
 import TodoList from './TodoList.jsx'
-import InputCard from './InputCard.jsx'
+import TodoInput from './TodoInput.jsx'
 
 function App() {
   const [ tab, setTab ] = useState('All')
+  function changeTab(tab) {
+    setTab(tab); 
+  }
 
-  //CONSIDERATION 2 [ANOTHER ONE IN TodoList.jsx - CONSIDERATION ONE]
 
   const [todos, setTodos] = useState(
     [
-    {id: uuidv4(), input: "go to the gym", isComplete: false}, 
-    {id: uuidv4(), input: "finish react project", isComplete: false}
+    {input: "go to the gym", isComplete: false}, 
+    {input: "finish react project", isComplete: false}
     ]
   
   )   
 
-  // i could probably pacakge this into a object and pass this object in 
-  function changeTodos(idx, toDelete=false) {
-    if (toDelete) {
-      return setTodos(todos.filter((todo, todoIdx) => todo.id === idx))
-    }
-    else{
-      return setTodos(todos.filter((todo) => todo.id == idx) )
-    }
-    
+  function handleAddTodo(newTodo) {
+    setTodos([...todos, {input: newTodo, isComplete:false}])
+
   }
 
-  function addNewTodo(newText) {
-    return setTodos([...todos, {id: uuidv4(), input: newText, isComplete: false}]) 
-  }
-  
+
 
 
   return (
     <>
       <Header todos={todos} tab={tab}/>
-      <Navigation todos={todos} changeTab={setTab}/>
-      <TodoList currTab = {tab} todos={todos} changeTodos = {changeTodos}/>
-      {/* {
-        currTab !== "Done" ? <InputCard addNewTodo={addNewTodo} /> : null
-      } */}
-
-    <InputCard addNewTodo={addNewTodo} />
+      <Navigation todos={todos} changeTab={changeTab}/>
+      <TodoList tab={tab} todos={todos} />
+      <TodoInput handleAddTodo={handleAddTodo}/>
       
       </>
   )
