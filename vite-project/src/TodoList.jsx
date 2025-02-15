@@ -1,31 +1,32 @@
 import TodoCard from './TodoCard'
 
 function TodoList(props) {
-    const { tab, todos } = props 
+
+    let { tab, todos} = props 
 
 
 
     if (tab !== 'All') {
-        todos = (currTab === "Done") ? 
+        todos = (tab === "Done") ? 
         todos.filter(todo => todo.isComplete): 
-        todos.filter(todo => !todo.isComplete);
+        todos.filter(todo => !todo.isComplete)
     }
-    console.log(todos)
+    console.log('from todo list')
+    console.log(tab, todos)
 
     return (
-        <div>
+        <>
             {
+                
                 todos.map((todo, todoIdx) => {
-
-                    return (
-                    <TodoCard key={todoIdx} 
-                        todo= {todo}/>
-                  ) 
+                    return <TodoCard key={todoIdx} 
+                    todo={todo}
+                    />
 
                 })
             }
 
-        </div>
+        </>
 
     )
 

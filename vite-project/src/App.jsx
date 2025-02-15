@@ -10,7 +10,9 @@ import TodoInput from './TodoInput.jsx'
 
 function App() {
   const [ tab, setTab ] = useState('All')
+
   function changeTab(tab) {
+    console.log(tab)
     setTab(tab); 
   }
 
@@ -27,9 +29,6 @@ function App() {
     setTodos([...todos, {input: newTodo, isComplete:false}])
 
   }
-
-
-
 
   return (
     <>
