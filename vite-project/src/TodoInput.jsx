@@ -20,7 +20,7 @@ function TodoInput(props) {
                 if (!inputValue) 
                     return 
                 handleAddTodo(inputValue)
-                setTodoText('')
+                setInputValue('')
                 }
                 }>             
             <i class="fa-solid fa-plus"></i>

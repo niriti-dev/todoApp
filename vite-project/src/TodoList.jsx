@@ -2,7 +2,7 @@ import TodoCard from './TodoCard'
 
 function TodoList(props) {
 
-    let { selectedTab, todos, handleDeleteTodo} = props 
+    let { selectedTab, todos, handleDeleteTodo, handleCompleteTodo} = props 
 
 
 

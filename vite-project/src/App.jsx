@@ -1,4 +1,4 @@
-import { use, useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import { v4 as uuidv4 } from 'uuid'
 
