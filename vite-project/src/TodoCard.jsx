@@ -1,31 +1,23 @@
 function TodoCard(props) {
-    const { todo, todoIdx, handleDeleteTodo, handleCompleteTodo } =  props 
+    const { todo, handleDeleteTodo, todoIndex, handleCompleteTodo } = props
 
-  
-    return(
-        <>
-            <div className="card todo-item">
-                    <p> {todo.input} </p>
-                    <div className="todo-button">
-
-                        <button disabled={todo.isComplete}
-                        onClick={() => {handleCompleteTodo(todoIdx)}}
-                        >
-                            Done
-                        </button>
-
-                        <button onClick={() => {console.log('delete'); handleDeleteTodo(todoIdx)}}>
-                            Detele 
-                        </button>
-
-                    </div>
-                    
+    return (
+        <div className="card todo-item">
+            <p>{todo.input}</p>
+            <div className="todo-buttons">
+                <button onClick={() => {
+                    handleCompleteTodo(todoIndex)
+                }} disabled={todo.isComplete}>
+                    <h6>Done</h6>
+                </button>
+                <button onClick={() => {
+                    handleDeleteTodo(todoIndex)
+                }}>
+                    <h6>Delete</h6>
+                </button>
             </div>
-
-
-        </>
-
-    ) 
+        </div>
+    )
 
 }
 

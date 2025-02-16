@@ -34,20 +34,32 @@ function App() {
 
   }
 
+  // function handleDeleteTodo(index) {
+  //   console.log
+  //   const newTodoList  = todos.filter((todo, todoIdx) => todoIdx !== index)
+  //   setTodos(newTodoList)
+
+  // }
+
   function handleDeleteTodo(index) {
-    const newTodoList  = todos.filter((todo, todoIdx) => todoIdx !== index)
+    let newTodoList = todos.filter((val, valIndex) => {
+      return valIndex !== index
+    })
     setTodos(newTodoList)
-
+    handleSaveData(newTodoList)
   }
   
-  function handleCompleteTodo(index){
-    const doneTodo = todos[index] 
-    doneTodo.isComplete = true 
-    setTodos(todos.map((todo) => todo.index === index? (doneTodo) : (todo)))
 
-  }
 
-  
+  function handleCompleteTodo(index) {
+    // update/edit/modify
+    let newTodoList = [...todos]
+    let completedTodo = todos[index]
+    completedTodo['isComplete'] = true
+    newTodoList[index] = completedTodo
+    setTodos(newTodoList)
+    handleSaveData(newTodoList)
+  } 
 
   
   return (
