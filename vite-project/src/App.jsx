@@ -7,23 +7,27 @@ import Header from './Header.jsx'
 import Navigation from './Navigation.jsx'
 import TodoList from './TodoList.jsx'
 import TodoInput from './TodoInput.jsx'
+import { cache } from 'react'
 
 function App() {
+
   const [ selectedTab, setSelectedTab ] = useState('Open')
 
   function changeTab(tab) {
     console.log(tab)
     setSelectedTab(tab); 
   }
-
-
-  const [todos, setTodos] = useState(
-    [
-    {input: "go to the gym", isComplete: false}, 
-    {input: "finish react project", isComplete: false}
-    ]
   
-  )   
+  const cacheKey = 'my-todo'
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem(cacheKey);
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
+  
+  useEffect(() => {    
+    localStorage.setItem(cacheKey, JSON.stringify(todos));
+  }, [todos]);
+  
 
   function handleAddTodo(newTodo) {
     setTodos([...todos, {input: newTodo, isComplete:false}])
